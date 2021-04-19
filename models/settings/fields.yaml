@@ -5,3 +5,9 @@ fields:
         span: auto
         default: 30
         type: number
+    hidden_templates:
+        label: Hidden templates
+        comment: "Mails made of these templates won't be added to mail log"
+        type: partial
+        path: ~/plugins/suresoftware/maillog/models/settings/_hidden_templates.htm
+
