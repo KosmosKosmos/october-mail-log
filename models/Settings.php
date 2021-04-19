@@ -39,7 +39,7 @@ class Settings extends Model
             }
             $fileNames[$file->getPathname()] = $description ? $description : $file->getFilename();
         }
-        Log::info($fileNames);
+        
         return $fileNames;
     }
 }
