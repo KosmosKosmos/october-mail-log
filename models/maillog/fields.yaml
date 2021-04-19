@@ -36,3 +36,7 @@ secondaryTabs:
         attachments:
             label: Attachments
             type: partial
+        backend_user:
+            label: Sent by User
+            type: relation
+            nameFrom: login

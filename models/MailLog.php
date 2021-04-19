@@ -32,6 +32,13 @@ class MailLog extends Model
         'bcc',
     ];
 
+    public $belongsTo = [
+        'backend_user' => [
+            'Backend\Models\User',
+            'key' => 'backend_user_id'
+        ]
+    ];
+
     /**
      * @param Mailer  $mailer
      * @param string  $view

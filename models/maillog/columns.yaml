@@ -30,6 +30,10 @@ columns:
         type: text
         searchable: false
         sortable: false
+    backend_user:
+        label: User
+        relation: backend_user
+        select: login
     created_at:
         label: Send at
         type: text
