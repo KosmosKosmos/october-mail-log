@@ -1,7 +1,9 @@
 <?php namespace SureSoftware\MailLog;
 
+use Andosto\EventManager\Classes\EmMailer;
 use Backend\Facades\Backend;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
 use SureSoftware\Maillog\Console\Purge;
 use SureSoftware\MailLog\Models\MailLog;
 use System\Classes\PluginBase;
@@ -17,6 +19,9 @@ class Plugin extends PluginBase
     {
         Event::listen('mailer.send', function ($mailer, $view, \Illuminate\Mail\Message $message) {
             try {
+                if ($mailer instanceof EmMailer && $mailer->hidden) {
+                    return;
+                }
                 (new MailLog)->createFromMailerSendEvent($mailer, $view, $message);
             } catch (\Exception $e) {
                 // Loggers should never trigger exceptions
