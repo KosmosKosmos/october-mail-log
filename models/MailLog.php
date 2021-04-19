@@ -1,5 +1,6 @@
 <?php namespace SureSoftware\MailLog\Models;
 
+use Backend\Facades\BackendAuth;
 use Illuminate\Mail\Message;
 use Model;
 use October\Rain\Mail\Mailer;
@@ -50,6 +51,8 @@ class MailLog extends Model
     {
         $mail = $message->getSwiftMessage();
 
+        $user = BackendAuth::getUser();
+
         $this->fill([
             'to'          => $this->formatEmails($mail->getTo()),
             'cc'          => $this->formatEmails($mail->getCc()),
@@ -60,6 +63,7 @@ class MailLog extends Model
             'template'    => $view,
             'sent'        => true,
             'attachments' => $this->extractAttachments($mail),
+            'backend_user_id' => $user ? $user->id : null
         ])->save();
 
         return $this;
