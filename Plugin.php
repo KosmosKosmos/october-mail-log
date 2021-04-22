@@ -3,7 +3,6 @@
 use Andosto\EventManager\Classes\EmMailer;
 use Backend\Facades\Backend;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Log;
 use SureSoftware\Maillog\Console\Purge;
 use SureSoftware\MailLog\Models\MailLog;
 use System\Classes\PluginBase;
