@@ -2,7 +2,6 @@
 
 use Backend\Facades\BackendAuth;
 use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\Log;
 use Model;
 use October\Rain\Mail\Mailer;
 use Swift_Attachment;
@@ -66,7 +65,6 @@ class MailLog extends Model
         $mail = $message->getSwiftMessage();
 
         $user = BackendAuth::getUser();
-        Log::info($user);
 
         $this->fill([
             'to'          => $this->formatEmails($mail->getTo()),
